@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:sec="http://www.springframework.org/schema/security"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<sec:http pattern="/resources/**" security="none"/>
+	
+	<sec:http auto-config="true">
+		<!-- <sec:intercept-url pattern="/**" access="ROLE_ADMIN" /> -->
+		<sec:intercept-url pattern="/admin*" access="ROLE_ADMIN,ROLE_REGULAR_USER" />
+		<sec:intercept-url pattern="/common" access="ROLE_ADMIN"/>
+		<sec:form-login login-page="/login" 
+			username-parameter="username" 
+			password-parameter="password" 
+			default-target-url="/admin" 
+			authentication-failure-url="/login?error" />
+		<sec:logout logout-success-url="/login?logout" />
+		<!-- enable csrf protection -->
+		<sec:csrf/>
+	</sec:http>
+	 
+	<sec:authentication-manager>
+		<sec:authentication-provider>
+			<sec:jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select username,password,enabled from user_authentication where username=?"
+				authorities-by-username-query="select u1.username, u2.role from user_authentication u1, user_authorization u2 where u1.user_id = u2.user_id and u1.username =?" />
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+	<!-- <sec:authentication-manager>
+		<sec:authentication-provider>
+			<sec:user-service>
+				<sec:user name="alpha" password="pass1" authorities="ROLE_ADMIN" />
+				<sec:user name="beta" password="pass2" authorities="ROLE_REGULAR_USER" />
+			</sec:user-service>
+		</sec:authentication-provider>
+	</sec:authentication-manager> -->
+</beans>
