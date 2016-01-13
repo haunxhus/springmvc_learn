@@ -81,7 +81,7 @@ public class LoginController {
 	public ModelAndView common() {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("common");
-		return model;
 		
+		return model;
 	}
 }
