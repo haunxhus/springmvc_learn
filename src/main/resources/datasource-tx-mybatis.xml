@@ -20,7 +20,13 @@
 	  <property name="username" value="${mybatis.connection.user}" />
 	  <property name="password" value="${mybatis.connection.password}" />
 	</bean>
-	
+	<!-- If request parameter "targetUrl" is existed, then forward to this url --> 
+  	<!-- For update login form -->
+	<bean id="savedRequestAwareAuthenticationSuccessHandler"
+		class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<property name="targetUrlParameter" value="targetUrl" />
+	</bean>
+  
 	<tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
 	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
