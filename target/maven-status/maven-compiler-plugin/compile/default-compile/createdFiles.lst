@@ -1,8 +1,0 @@
-com/springmvc/model/Student.class
-com/springmvc/interceptor/CustomRequestHandler.class
-com/springmvc/mappers/StudentMapper.class
-com/springmvc/service/StudentServiceImpl.class
-com/springmvc/model/StudentLogin.class
-com/springmvc/controllers/HomeController.class
-com/springmvc/service/StudentService.class
-com/springmvc/controllers/StudentController.class
