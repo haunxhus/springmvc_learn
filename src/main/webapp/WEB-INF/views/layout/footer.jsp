@@ -1,2 +1,3 @@
+<%@ include file="/WEB-INF/views/includes/taglib.jsp"%>
 <hr/>  
-<p>Copyright</p> 
+<p><spring:message code="footer.copyright"/></p> 

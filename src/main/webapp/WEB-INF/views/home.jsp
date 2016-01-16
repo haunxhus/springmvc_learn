@@ -1,14 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@	taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page session="true"%>
-
+<%@ include file="/WEB-INF/views/includes/taglib.jsp"%>
 <div class="panel panel-success">
 	<div class="panel-heading">
-		<h3 class="panel-title">Home Page</h3>
+		<h3 class="panel-title"><spring:message code="home.homepage"/></h3>
 	</div>
 	<div class="panel-body">
 		<div class="alert alert-dismissable alert-success">
