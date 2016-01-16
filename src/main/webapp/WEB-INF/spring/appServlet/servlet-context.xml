@@ -58,4 +58,16 @@
             </beans:list>  
         </beans:property>  
     </beans:bean>  
+    <!-- Begin internationalization configuration -->
+    <interceptors>
+		<beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<beans:property name="paramName" value="language" />
+		</beans:bean>
+	</interceptors>
+	<beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<beans:property name="basenames" value="WEB-INF/i18n/application" />
+		<beans:property name="fallbackToSystemLocale" value="false" />
+		<beans:property name="defaultEncoding" value="UTF-8"/>
+	</beans:bean>
+	<!-- End internationalization configuration -->
 </beans:beans>
